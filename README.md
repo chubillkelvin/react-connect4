@@ -8,3 +8,4 @@
 7. yarn add --dev prettier
 8. Add prettier.json and update content
 9. Update package.json for prettier script
+10. Set up folder structure in src and add react-redux
