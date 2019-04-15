@@ -3,8 +3,7 @@
     "target": "es5",
     "lib": [
       "dom",
-      "dom.iterable",
-      "esnext"
+      "es2017"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,5 +20,7 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "rootDir": "src",
+  "outDir": "build"
 }
