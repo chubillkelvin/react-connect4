@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import Column from "../Column";
+import DragRow from "../DragRow";
 import {SlotState} from "../../../../type/type";
 
 const data: SlotState[][] = [
@@ -19,7 +20,12 @@ class GameBoard extends React.PureComponent {
         for (let i = 0; i < 7; i++) {
             columns.push(<Column data={data[i]} column={i} key={`column-${i}`} />);
         }
-        return <div className="container">{columns}</div>;
+        return (
+            <div className="container">
+                <DragRow />
+                {columns}
+            </div>
+        );
     }
 }
 
