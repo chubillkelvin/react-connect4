@@ -14,16 +14,6 @@ class Column extends React.Component<Props> {
         onHover: false,
     };
 
-    shouldComponentUpdate(nextProps: Readonly<Props>, nextState: Readonly<{}>, nextContext: any): boolean {
-        const {data} = this.props;
-        nextProps.data.forEach((datum, i) => {
-            if(datum === data[i]){
-                this.forceUpdate();
-            }
-        });
-        return false;
-    }
-
     render() {
         const {column, data} = this.props;
         const slots: JSX.Element[] = [];
