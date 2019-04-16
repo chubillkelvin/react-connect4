@@ -1,10 +1,10 @@
 export enum SlotState {
-    available = "available",
-    red = "red",
-    yellow = "yellow",
+    player1,
+    player2,
+    available,
 }
 
 export enum Player {
-    red = "red",
-    yellow = "yellow",
+    player1,
+    player2,
 }

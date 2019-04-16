@@ -2,6 +2,9 @@ import React from "react";
 import "./index.css";
 import {Player} from "../../../../type/type";
 
+const color1 = "red";
+const color2 = "yellow";
+
 interface Props {
     currentPlayer: Player;
 }
@@ -9,7 +12,8 @@ interface Props {
 class Piece extends React.PureComponent<Props> {
     render() {
         const {currentPlayer} = this.props;
-        return <div className={`${currentPlayer} piece`} />;
+        const pieceColor = currentPlayer === Player.player1 ? color1 : color2;
+        return <div className={`${pieceColor} piece`} />;
     }
 }
 

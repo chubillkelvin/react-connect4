@@ -25,7 +25,7 @@ class GameBoard extends React.PureComponent<{}, State> {
                 [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
                 [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
             ],
-            currentPlayer: Player.red,
+            currentPlayer: Player.player1,
             currentX: 0,
             dragging: false,
         };
@@ -48,8 +48,8 @@ class GameBoard extends React.PureComponent<{}, State> {
         if (rowIndex === -1) {
             this.setState({dragging: false});
         } else {
-            newData[columnIndex][rowIndex] = currentPlayer === Player.red ? SlotState.red : SlotState.yellow;
-            this.setState({data: newData, dragging: false, currentPlayer: currentPlayer === Player.red ? Player.yellow : Player.red});
+            newData[columnIndex][rowIndex] = currentPlayer as number;
+            this.setState({data: newData, dragging: false, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1});
         }
     };
 
