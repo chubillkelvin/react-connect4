@@ -33,7 +33,16 @@ class GameBoard extends React.PureComponent<{}, State> {
         this.setState({currentX: data.x});
     };
 
+    onStop = (e:DraggableEvent, data: DraggableData) => {
+        const x = data.x;
+        const columnIndex = Math.round(x / 100);
+        const newData = this.state.data.slice();
+        newData[columnIndex][5] = SlotState.red;
+        this.setState({data: newData});
+    }
+
     render() {
+        const onDragHandler = {onDrag: this.onDrag, onStop: this.onStop};
         const {data, currentPlayer, currentX} = this.state;
         const columns: JSX.Element[] = [];
         for (let i = 0; i < 7; i++) {
@@ -41,7 +50,7 @@ class GameBoard extends React.PureComponent<{}, State> {
         }
         return (
             <div className="container">
-                <DragRow currentPlayer={currentPlayer} onDrag={this.onDrag} />
+                <DragRow currentPlayer={currentPlayer} onDragHandler={onDragHandler} />
                 {columns}
             </div>
         );

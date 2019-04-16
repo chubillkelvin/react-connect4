@@ -9,16 +9,26 @@ interface Props {
     onHover?: boolean;
 }
 
-class Column extends React.PureComponent<Props> {
+class Column extends React.Component<Props> {
     static defaultProps = {
         onHover: false,
     };
+
+    shouldComponentUpdate(nextProps: Readonly<Props>, nextState: Readonly<{}>, nextContext: any): boolean {
+        const {data} = this.props;
+        nextProps.data.forEach((datum, i) => {
+            if(datum === data[i]){
+                this.forceUpdate();
+            }
+        });
+        return false;
+    }
 
     render() {
         const {column, data} = this.props;
         const slots: JSX.Element[] = [];
         for (let i = 0; i < 6; i++) {
-            slots.push(<Slot takenBy={data[i]} key={`${column}-${i}`} />);
+            slots.push(<Slot takenBy={data[i]} key={`slot-${column}-${i}`} />);
         }
         return <div className="column">{slots}</div>;
     }

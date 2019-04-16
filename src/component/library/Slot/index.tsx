@@ -15,7 +15,7 @@ class Slot extends React.PureComponent<Props> {
 
     render() {
         const {takenBy, highlight} = this.props;
-        return <div className={`slot ${takenBy} ${highlight ? "highlight" : null}`} />;
+        return <div className={`slot ${takenBy} ${highlight ? "highlight" : ""}`} />;
     }
 }
 

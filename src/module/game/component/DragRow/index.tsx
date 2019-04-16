@@ -4,37 +4,22 @@ import "./index.css";
 import Piece from "../Piece";
 import {Player} from "../../../../type/type";
 
+interface OnDragHandlers {
+    onDrag: DraggableEventHandler;
+    onStop: DraggableEventHandler;
+}
+
 interface Props {
     currentPlayer: Player;
-    onDrag: DraggableEventHandler;
+    onDragHandler: OnDragHandlers;
 }
 
-interface State {
-    activeDrags: number;
-}
-
-class DragRow extends React.PureComponent<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            activeDrags: 0,
-        };
-    }
-
-    onStart = () => {
-        this.setState({activeDrags: this.state.activeDrags + 1});
-    };
-
-    onStop = () => {
-        this.setState({activeDrags: this.state.activeDrags - 1});
-    };
-
+class DragRow extends React.PureComponent<Props> {
     render() {
-        const {currentPlayer} = this.props;
-        const dragHandlers = {onStart: this.onStart, onStop: this.onStop, onDrag: this.props.onDrag};
+        const {currentPlayer, onDragHandler} = this.props;
         return (
             <div className="dragrow">
-                <Draggable {...dragHandlers} grid={[100, 100]} bounds="parent">
+                <Draggable {...onDragHandler} grid={[100, 100]} bounds="parent">
                     <div className="draggableDiv">
                         <Piece currentPlayer={currentPlayer} />
                     </div>
