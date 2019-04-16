@@ -41,10 +41,16 @@ class GameBoard extends React.PureComponent<{}, State> {
 
     onStop = (e:DraggableEvent, data: DraggableData) => {
         const x = data.x;
-        const columnIndex = Math.round(x / 100);
+        const {currentPlayer} = this.state;
         const newData = [...this.state.data];
-        newData[columnIndex][5] = SlotState.red;
-        this.setState({data: newData, dragging: false});
+        const columnIndex = Math.round(x / 100);
+        const rowIndex = newData[columnIndex].lastIndexOf(SlotState.available);
+        if(rowIndex === -1){
+            this.setState({dragging: false});
+        } else {
+            newData[columnIndex][rowIndex] = currentPlayer === Player.red ? SlotState.red : SlotState.yellow;
+            this.setState({data: newData, dragging: false, currentPlayer: currentPlayer === Player.red ? Player.yellow : Player.red});
+        }
     };
 
     render() {
