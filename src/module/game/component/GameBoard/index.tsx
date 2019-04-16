@@ -9,6 +9,7 @@ interface State {
     data: SlotState[][];
     currentPlayer: Player;
     currentX: number;
+    dragging: boolean;
 }
 
 class GameBoard extends React.PureComponent<{}, State> {
@@ -26,8 +27,13 @@ class GameBoard extends React.PureComponent<{}, State> {
             ],
             currentPlayer: Player.red,
             currentX: 0,
+            dragging: false,
         };
     }
+
+    onStart = () => {
+        this.setState({dragging: true});
+    };
 
     onDrag = (e: DraggableEvent, data: DraggableData) => {
         this.setState({currentX: data.x});
@@ -38,15 +44,15 @@ class GameBoard extends React.PureComponent<{}, State> {
         const columnIndex = Math.round(x / 100);
         const newData = [...this.state.data];
         newData[columnIndex][5] = SlotState.red;
-        this.setState({data: newData});
-    }
+        this.setState({data: newData, dragging: false});
+    };
 
     render() {
-        const onDragHandler = {onDrag: this.onDrag, onStop: this.onStop};
-        const {data, currentPlayer, currentX} = this.state;
+        const onDragHandler = {onStart: this.onStart, onDrag: this.onDrag, onStop: this.onStop};
+        const {data, currentPlayer, currentX, dragging} = this.state;
         const columns: JSX.Element[] = [];
         for (let i = 0; i < 7; i++) {
-            columns.push(<Column data={data[i]} column={i} key={`column-${i}`} />);
+            columns.push(<Column data={data[i]} column={i} key={`column-${i}`} onHover={dragging && Math.round(currentX / 100) === i}/>);
         }
         return (
             <div className="container">
