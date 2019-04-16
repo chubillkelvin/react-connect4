@@ -19,7 +19,7 @@ class Column extends React.Component<Props> {
         const highlight = onHover ? data.lastIndexOf(SlotState.available) : null;
         const slots: JSX.Element[] = [];
         for (let i = 0; i < 6; i++) {
-            slots.push(<Slot takenBy={data[i]} key={`slot-${column}-${i}`} highlight={highlight === i}/>);
+            slots.push(<Slot takenBy={data[i]} key={`slot-${column}-${i}`} highlight={highlight === i} />);
         }
         return <div className="column">{slots}</div>;
     }

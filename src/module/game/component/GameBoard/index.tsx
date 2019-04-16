@@ -39,13 +39,13 @@ class GameBoard extends React.PureComponent<{}, State> {
         this.setState({currentX: data.x});
     };
 
-    onStop = (e:DraggableEvent, data: DraggableData) => {
+    onStop = (e: DraggableEvent, data: DraggableData) => {
         const x = data.x;
         const {currentPlayer} = this.state;
         const newData = [...this.state.data];
         const columnIndex = Math.round(x / 100);
         const rowIndex = newData[columnIndex].lastIndexOf(SlotState.available);
-        if(rowIndex === -1){
+        if (rowIndex === -1) {
             this.setState({dragging: false});
         } else {
             newData[columnIndex][rowIndex] = currentPlayer === Player.red ? SlotState.red : SlotState.yellow;
@@ -58,7 +58,7 @@ class GameBoard extends React.PureComponent<{}, State> {
         const {data, currentPlayer, currentX, dragging} = this.state;
         const columns: JSX.Element[] = [];
         for (let i = 0; i < 7; i++) {
-            columns.push(<Column data={data[i]} column={i} key={`column-${i}`} onHover={dragging && Math.round(currentX / 100) === i}/>);
+            columns.push(<Column data={data[i]} column={i} key={`column-${i}`} onHover={dragging && Math.round(currentX / 100) === i} />);
         }
         return (
             <div className="container">
