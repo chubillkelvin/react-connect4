@@ -1,11 +1,12 @@
 import React from "react";
-import Draggable from "react-draggable";
+import Draggable, {DraggableEventHandler} from "react-draggable";
 import "./index.css";
 import Piece from "../Piece";
 import {Player} from "../../../../type/type";
 
 interface Props {
     currentPlayer: Player;
+    onDrag: DraggableEventHandler;
 }
 
 interface State {
@@ -30,7 +31,7 @@ class DragRow extends React.PureComponent<Props, State> {
 
     render() {
         const {currentPlayer} = this.props;
-        const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
+        const dragHandlers = {onStart: this.onStart, onStop: this.onStop, onDrag: this.props.onDrag};
         return (
             <div className="dragrow">
                 <Draggable {...dragHandlers} grid={[100, 100]} bounds="parent">
