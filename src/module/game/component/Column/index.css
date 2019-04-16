@@ -1,0 +1,10 @@
+.column {
+  width: 100px;
+  height: 600px;
+  float: left;
+  padding: 0;
+  margin: 0;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
