@@ -1,14 +1,15 @@
 import React from "react";
 import "./index.css";
+import {SlotState} from "../../../type/type";
 
 interface Props {
-    takenBy?: "available" | "red" | "yellow";
+    takenBy?: SlotState;
     highlight?: boolean;
 }
 
 class Slot extends React.PureComponent<Props> {
     static defaultProps = {
-        takenBy: "available",
+        takenBy: SlotState.available,
         highlight: false,
     };
 

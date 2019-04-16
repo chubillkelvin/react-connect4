@@ -1,9 +1,9 @@
 .red {
-  background-color: red;
+  background-color: red !important;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: yellow !important;
 }
 
 .slot {
