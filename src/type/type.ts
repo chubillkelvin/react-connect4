@@ -3,3 +3,8 @@ export enum SlotState {
     red = "red",
     yellow = "yellow",
 }
+
+export enum Player {
+    red = "red",
+    yellow = "yellow",
+}
