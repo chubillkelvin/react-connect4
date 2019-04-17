@@ -2,23 +2,7 @@ import {Action as GameAction, State as GameState} from "../../module/game/main/t
 import {Action} from "../actions/game";
 import {Player, SlotState} from "../../type/type";
 
-const initialState: GameState = {
-    data: [
-        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
-        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
-        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
-        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
-        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
-        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
-        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
-    ],
-    currentPlayer: Player.player1,
-    currentX: 0,
-    dragging: false,
-    winner: null,
-};
-
-function checkWin(data: SlotState[][], currentPlayer: Player, currentColIndex: number, currentPosIndex: number) {
+function checkWin(data: SlotState[][], currentPlayer: Player, currentColIndex: number, currentPosIndex: number): boolean {
     // Check for vertical
     const verticalSlots: number[] = data[currentColIndex].map(slot => ((slot as number) === (currentPlayer as number) ? 1 : 0));
     for (let i = 0; i < 3; i++) {
@@ -115,6 +99,22 @@ function checkWin(data: SlotState[][], currentPlayer: Player, currentColIndex: n
     }
     return false;
 }
+
+const initialState: GameState = {
+    data: [
+        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
+        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
+        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
+        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
+        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
+        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
+        [SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available, SlotState.available],
+    ],
+    currentPlayer: Player.player1,
+    currentX: 0,
+    dragging: false,
+    winner: null,
+};
 
 export function gameReducer(state: GameState = initialState, action: Action): GameState {
     const {payload} = action;
