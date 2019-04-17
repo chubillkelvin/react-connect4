@@ -6,16 +6,11 @@ const color1 = "red";
 const color2 = "yellow";
 
 interface Props {
-    takenBy?: SlotState;
-    highlight?: boolean;
+    takenBy: SlotState;
+    highlight: boolean;
 }
 
 class Slot extends React.PureComponent<Props> {
-    static defaultProps = {
-        takenBy: SlotState.available,
-        highlight: false,
-    };
-
     render() {
         const {takenBy, highlight} = this.props;
         const slotColor = takenBy === SlotState.available ? "" : takenBy === SlotState.player1 ? color1 : color2;
