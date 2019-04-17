@@ -34,6 +34,7 @@
   ],
   "devDependencies": {
     "prettier": "^1.17.0",
+    "redux-devtools-extension": "^2.13.8",
     "tslint": "^5.15.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",

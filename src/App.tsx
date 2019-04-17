@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React from "react";
 import "./App.css";
-import GameBoard from "./module/game/component/GameBoard";
+import MainComponent from "./module/game/main";
 
-class App extends Component {
+class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <GameBoard />
+                <MainComponent />
             </div>
         );
     }
