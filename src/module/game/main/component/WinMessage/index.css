@@ -1,0 +1,22 @@
+.message {
+  position: absolute;
+  font-family: Helvetica;
+  font-size: 100px;
+  width: 700px;
+  height: 700px;
+  left: 50%;
+  margin-left: -350px;
+  top: 50%;
+  margin-top: -300px;
+  text-align: center;
+  line-height: 700px;
+  text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black;
+}
+
+.red-font {
+  color: red;
+}
+
+.yellow-font {
+  color: yellow;
+}

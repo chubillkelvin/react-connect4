@@ -5,6 +5,7 @@ export interface State {
     currentPlayer: Player;
     currentX: number;
     dragging: boolean;
+    winner: Player | null;
 }
 
 export enum Action {

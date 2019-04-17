@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import Column from "../Column";
 import DragRow from "../DragRow";
+import WinMessage from "../WinMessage";
 
 class GameBoard extends React.PureComponent<{}> {
     render() {
@@ -13,6 +14,7 @@ class GameBoard extends React.PureComponent<{}> {
             <div className="container">
                 <DragRow />
                 {columns}
+                <WinMessage />
             </div>
         );
     }
