@@ -7,7 +7,7 @@ import {rootReducer} from "./reducers";
 export function configureStore(initialState?: RootState): Store<RootState> {
     let middleware = applyMiddleware(dataLogger);
 
-    if(process.env.NODE_ENV !== "production"){
+    if (process.env.NODE_ENV !== "production") {
         middleware = composeWithDevTools(middleware);
     }
 

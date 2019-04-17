@@ -1,10 +1,6 @@
 import {State as GameState, Action as GameAction} from "../../module/game/main/type";
+import {Action} from "../actions/game";
 import {Player, SlotState} from "../../type/type";
-
-interface Action {
-    type: GameAction;
-    payload: any;
-}
 
 const initialState: GameState = {
     data: [
@@ -25,9 +21,9 @@ export function gameReducer(state: GameState = initialState, action: Action): Ga
     const {payload} = action;
     switch (action.type) {
         case GameAction.ON_DRAG_START:
-            return {dragging: true, ...state};
+            return {...state, dragging: true};
         case GameAction.ON_DRAG:
-            return {currentX: payload.data.x, ...state};
+            return {...state, currentX: payload.data.x};
         case GameAction.ON_DRAG_STOP:
             const x = action.payload.data.x;
             const {currentPlayer} = state;
@@ -38,7 +34,7 @@ export function gameReducer(state: GameState = initialState, action: Action): Ga
                 return {dragging: false, ...state};
             } else {
                 newData[columnIndex][rowIndex] = currentPlayer as number;
-                return {data: newData, dragging: false, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1, ...state};
+                return {...state, data: newData, dragging: false, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1};
             }
         default:
             return state;

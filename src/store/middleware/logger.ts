@@ -1,3 +1,4 @@
+/* tslint:disable */
 import {Middleware} from "redux";
 
 export const dataLogger: Middleware = store => next => action => {
