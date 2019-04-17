@@ -2,7 +2,7 @@ import {Action as GameAction, State as GameState} from "../../module/game/main/t
 import {Action} from "../actions/game";
 import {Player, SlotState} from "../../type/type";
 
-function checkWin(data: SlotState[][], currentPlayer: Player, currentColIndex: number, currentPosIndex: number): boolean {
+const checkWin = (data: SlotState[][], currentPlayer: Player, currentColIndex: number, currentPosIndex: number): boolean => {
     // Check for vertical
     const verticalSlots: number[] = data[currentColIndex].map(slot => ((slot as number) === (currentPlayer as number) ? 1 : 0));
     for (let i = 0; i < 3; i++) {
@@ -98,7 +98,7 @@ function checkWin(data: SlotState[][], currentPlayer: Player, currentColIndex: n
         }
     }
     return false;
-}
+};
 
 const initialState: GameState = {
     data: [
@@ -114,13 +114,16 @@ const initialState: GameState = {
     currentX: 0,
     dragging: false,
     winner: null,
+    showPrompt: true,
 };
 
 export function gameReducer(state: GameState = initialState, action: Action): GameState {
+    // const tickSound = new Audio("../../asset/sound/tick.wav");
+    // const winSound = new Audio("../../asset/sound/win.wav");
     const {payload} = action;
     switch (action.type) {
         case GameAction.ON_DRAG_START:
-            return {...state, dragging: true};
+            return {...state, dragging: true, showPrompt: false};
         case GameAction.ON_DRAG:
             return {...state, currentX: payload.data.x};
         case GameAction.ON_DRAG_STOP:
@@ -132,8 +135,13 @@ export function gameReducer(state: GameState = initialState, action: Action): Ga
             if (rowIndex === -1) {
                 return {dragging: false, ...state};
             } else {
+                // tickSound.play();
                 newData[columnIndex][rowIndex] = currentPlayer as number;
                 const won = checkWin(newData, currentPlayer, columnIndex, rowIndex);
+                // if (won) {
+                //     tickSound.pause();
+                //     winSound.play();
+                // }
                 return {...state, data: newData, dragging: false, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1, winner: won ? currentPlayer : null};
             }
         default:

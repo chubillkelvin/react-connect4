@@ -7,6 +7,7 @@ import * as actions from "../../../../../store/actions/game";
 import {Dispatch} from "redux";
 import {Player} from "../../../../../type/type";
 import {RootState} from "../../../../../type/state";
+import PromptMessage from "../PromptMessage";
 
 const createHandlers = (dispatch: Dispatch) => {
     const onStart = () => {
@@ -25,6 +26,7 @@ const createHandlers = (dispatch: Dispatch) => {
 
 interface StateProps {
     winner: Player | null;
+    showPrompt: boolean;
 }
 
 interface Props extends StateProps {
@@ -33,9 +35,10 @@ interface Props extends StateProps {
 
 class DragRow extends React.PureComponent<Props> {
     render() {
-        const {winner} = this.props;
+        const {winner, showPrompt} = this.props;
         return (
             <div className="dragrow">
+                {showPrompt && <PromptMessage />}
                 <Draggable {...createHandlers(this.props.dispatch)} grid={[100, 100]} bounds="parent" disabled={winner !== null}>
                     <div className="draggableDiv">
                         <Piece />
@@ -48,6 +51,7 @@ class DragRow extends React.PureComponent<Props> {
 
 const mapStateToProps = (state: RootState): StateProps => ({
     winner: state.game.winner,
+    showPrompt: state.game.showPrompt,
 });
 
 export default connect(mapStateToProps)(DragRow);
