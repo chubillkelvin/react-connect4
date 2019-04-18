@@ -7,6 +7,7 @@ export interface State {
     dragging: boolean;
     winner: Player | null;
     showPrompt: boolean;
+    playTickSound: boolean;
 }
 
 export enum Action {

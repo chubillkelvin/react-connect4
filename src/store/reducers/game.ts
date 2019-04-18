@@ -115,17 +115,16 @@ const initialState: GameState = {
     dragging: false,
     winner: null,
     showPrompt: true,
+    playTickSound: false,
 };
 
 export function gameReducer(state: GameState = initialState, action: Action): GameState {
-    // const tickSound = new Audio("../../asset/sound/tick.wav");
-    // const winSound = new Audio("../../asset/sound/win.wav");
     const {payload} = action;
     switch (action.type) {
         case GameAction.ON_DRAG_START:
-            return {...state, dragging: true, showPrompt: false};
+            return {...state, dragging: true, showPrompt: false, playTickSound: false};
         case GameAction.ON_DRAG:
-            return {...state, currentX: payload.data.x};
+            return {...state, currentX: payload.data.x, playTickSound: false};
         case GameAction.ON_DRAG_STOP:
             const x = action.payload.data.x;
             const {currentPlayer} = state;
@@ -133,16 +132,11 @@ export function gameReducer(state: GameState = initialState, action: Action): Ga
             const columnIndex = Math.round(x / 100);
             const rowIndex = newData[columnIndex].lastIndexOf(SlotState.available);
             if (rowIndex === -1) {
-                return {dragging: false, ...state};
+                return {dragging: false, ...state, playTickSound: false};
             } else {
-                // tickSound.play();
                 newData[columnIndex][rowIndex] = currentPlayer as number;
                 const won = checkWin(newData, currentPlayer, columnIndex, rowIndex);
-                // if (won) {
-                //     tickSound.pause();
-                //     winSound.play();
-                // }
-                return {...state, data: newData, dragging: false, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1, winner: won ? currentPlayer : null};
+                return {...state, data: newData, dragging: false, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1, winner: won ? currentPlayer : null, playTickSound: !won};
             }
         default:
             return state;

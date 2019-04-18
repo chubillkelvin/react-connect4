@@ -17,7 +17,12 @@ class WinMessage extends React.PureComponent<Props> {
     render() {
         const {winner} = this.props;
         const messageColor = winner === null ? null : winner === Player.player1 ? color1 : color2;
-        return winner === null ? null : <h1 className={`${messageColor}-font message`}>{`Player ${winner + 1} wins!`}</h1>;
+        return winner === null ? null : (
+            <h1 className={`${messageColor}-font message`}>
+                {`Player ${winner + 1} wins!`}
+                <audio autoPlay src={require("../../../../../asset/sound/win.wav")} />
+            </h1>
+        );
     }
 }
 
