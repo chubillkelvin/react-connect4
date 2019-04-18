@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/react-connect4/static/media/win.0ed7f907.wav"
   },
   {
-    "revision": "b1e7ece6b45ee7c339bae53062722e1d",
+    "revision": "f7d977511f642fc800e9ac260932c118",
     "url": "/react-connect4/index.html"
   }
 ];
