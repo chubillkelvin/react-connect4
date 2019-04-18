@@ -1,0 +1,16 @@
+{
+  "main.css": "/react-connect4/static/css/main.8097888c.chunk.css",
+  "main.js": "/react-connect4/static/js/main.4a002d2b.chunk.js",
+  "main.js.map": "/react-connect4/static/js/main.4a002d2b.chunk.js.map",
+  "runtime~main.js": "/react-connect4/static/js/runtime~main.966f089c.js",
+  "runtime~main.js.map": "/react-connect4/static/js/runtime~main.966f089c.js.map",
+  "static/js/2.ba395629.chunk.js": "/react-connect4/static/js/2.ba395629.chunk.js",
+  "static/js/2.ba395629.chunk.js.map": "/react-connect4/static/js/2.ba395629.chunk.js.map",
+  "index.html": "/react-connect4/index.html",
+  "precache-manifest.a1e9830868f045f4a77d15a0f3595312.js": "/react-connect4/precache-manifest.a1e9830868f045f4a77d15a0f3595312.js",
+  "service-worker.js": "/react-connect4/service-worker.js",
+  "static/css/main.8097888c.chunk.css.map": "/react-connect4/static/css/main.8097888c.chunk.css.map",
+  "static/media/index.css": "/react-connect4/static/media/click.1451830d.png",
+  "static/media/tick.wav": "/react-connect4/static/media/tick.7182f328.wav",
+  "static/media/win.wav": "/react-connect4/static/media/win.0ed7f907.wav"
+}
