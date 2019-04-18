@@ -1,4 +1,24 @@
-# Steps for setting up project with
+# Connect 4
+Connect Four is a well-known two-player game in which players take turn to drop their color piece in a vertically suspended 6-by-7 grid.
+
+The goal of the game is to be the first to form a horizontal, vertical or diagonal line of four of one's own color pieces.
+
+You can read more in this [Wikipedia Page](https://en.wikipedia.org/wiki/Connect_Four).
+
+## Project Description
+This project is a React-version rebuild of my previous project [Connect 4](https://github.com/RageBill/connect4) which was built with jQuery and jQuery UI.
+
+## Libraries Used
+
+* node @ 11.13.4
+* typescript @ 3.4.3
+* react @ 16.8.6
+* react-dom @ 16.8.6
+* react-redux @ 7.0.6
+* redux @ 3.6.0
+* react-draggable @ 3.2.1
+
+## Extra notes for setting up project with React, Typescript, Redux and React-Redux
 1. npx create-react-app react-connect4 --typescript
 2. (optional) Add .idea/ (or other code editor configs) inside .gitignore
 3. Update tsconfig.json
