@@ -1,7 +1,7 @@
 import {Player, SlotState} from "../../../../type/type";
 
 export class WinChecker {
-    static checkWinner(data: SlotState[][], currentPlayer: Player, currentColIndex: number, currentPosIndex: number): boolean {
+    static checkWinner(data: SlotState[][], currentPlayer: Player, currentColIndex: number, currentRowIndex: number): boolean {
         // Check for vertical
         const verticalSlots: number[] = data[currentColIndex].map(slot => ((slot as number) === (currentPlayer as number) ? 1 : 0));
         for (let i = 0; i < 3; i++) {
@@ -12,7 +12,7 @@ export class WinChecker {
 
         // Check for horizontal
         const dataByCurrentPosIndex: SlotState[] = [];
-        data.forEach(column => dataByCurrentPosIndex.push(column[currentPosIndex]));
+        data.forEach(column => dataByCurrentPosIndex.push(column[currentRowIndex]));
         const horizontalSlots: number[] = dataByCurrentPosIndex.map(slot => ((slot as number) === (currentPlayer as number) ? 1 : 0));
         for (let i = 0; i < 4; i++) {
             if (horizontalSlots.slice(i, i + 4).reduce((total, num) => total + num) === 4) {
@@ -23,10 +23,10 @@ export class WinChecker {
         // Check for slanting
 
         // Check for entries in the two slanting lines
-        const leftTop = {col: currentColIndex, pos: currentPosIndex};
-        const rightBot = {col: currentColIndex, pos: currentPosIndex};
-        const leftBot = {col: currentColIndex, pos: currentPosIndex};
-        const rightTop = {col: currentColIndex, pos: currentPosIndex};
+        const leftTop = {col: currentColIndex, row: currentRowIndex};
+        const rightBot = {col: currentColIndex, row: currentRowIndex};
+        const leftBot = {col: currentColIndex, row: currentRowIndex};
+        const rightTop = {col: currentColIndex, row: currentRowIndex};
 
         let fixedTop = false;
         let fixedBot = false;
@@ -34,16 +34,16 @@ export class WinChecker {
         while (i > 0) {
             i -= 1;
 
-            if (leftTop.pos - 1 >= 0 && !fixedTop) {
+            if (leftTop.row - 1 >= 0 && !fixedTop) {
                 leftTop.col = i;
-                leftTop.pos -= 1;
+                leftTop.row -= 1;
             } else {
                 fixedTop = true;
             }
 
-            if (leftBot.pos + 1 <= 5 && !fixedBot) {
+            if (leftBot.row + 1 <= 5 && !fixedBot) {
                 leftBot.col = i;
-                leftBot.pos += 1;
+                leftBot.row += 1;
             } else {
                 fixedBot = true;
             }
@@ -55,16 +55,16 @@ export class WinChecker {
         while (i < 6) {
             i += 1;
 
-            if (rightTop.pos - 1 >= 0 && !fixedTop) {
+            if (rightTop.row - 1 >= 0 && !fixedTop) {
                 rightTop.col = i;
-                rightTop.pos -= 1;
+                rightTop.row -= 1;
             } else {
                 fixedTop = true;
             }
 
-            if (rightBot.pos + 1 <= 5 && !fixedBot) {
+            if (rightBot.row + 1 <= 5 && !fixedBot) {
                 rightBot.col = i;
-                rightBot.pos += 1;
+                rightBot.row += 1;
             } else {
                 fixedBot = true;
             }
@@ -72,11 +72,11 @@ export class WinChecker {
 
         let line1: SlotState[] = [];
         for (let i = 0; i <= rightBot.col - leftTop.col; i++) {
-            line1.push(data[leftTop.col + i][leftTop.pos + i]);
+            line1.push(data[leftTop.col + i][leftTop.row + i]);
         }
         let line2: SlotState[] = [];
         for (let i = 0; i <= rightTop.col - leftBot.col; i++) {
-            line2.push(data[leftBot.col + i][leftBot.pos - i]);
+            line2.push(data[leftBot.col + i][leftBot.row - i]);
         }
         line1 = line1.map(slot => ((slot as number) === (currentPlayer as number) ? 1 : 0));
         line2 = line2.map(slot => ((slot as number) === (currentPlayer as number) ? 1 : 0));

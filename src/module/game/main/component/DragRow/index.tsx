@@ -9,6 +9,15 @@ import {Player} from "../../../../../type/type";
 import {RootState} from "../../../../../type/state";
 import PromptMessage from "../PromptMessage";
 
+interface StateProps {
+    winner: Player | null;
+    showPrompt: boolean;
+}
+
+interface Props extends StateProps {
+    dispatch: Dispatch;
+}
+
 const createHandlers = (dispatch: Dispatch) => {
     const onStart = () => {
         dispatch(actions.onStart());
@@ -23,15 +32,6 @@ const createHandlers = (dispatch: Dispatch) => {
     };
     return {onStart, onDrag, onStop};
 };
-
-interface StateProps {
-    winner: Player | null;
-    showPrompt: boolean;
-}
-
-interface Props extends StateProps {
-    dispatch: Dispatch;
-}
 
 class DragRow extends React.PureComponent<Props> {
     render() {
