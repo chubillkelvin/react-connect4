@@ -8,7 +8,7 @@ You can read more in this [Wikipedia Page](https://en.wikipedia.org/wiki/Connect
 ## Project Description
 This project is a React-version rebuild of my previous project [Connect 4](https://github.com/RageBill/connect4) which was built with jQuery and jQuery UI.
 
-## Tools Used
+## Main Dependencies
 
 * node @ 11.13.4
 * typescript @ 3.4.3
