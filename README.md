@@ -17,6 +17,7 @@ This project is a React-version rebuild of my previous project [Connect 4](https
 * react-redux @ 7.0.6
 * redux @ 3.6.0
 * react-draggable @ 3.2.1
+* jest @ 23.6.0
 
 ## Extra notes for setting up project with React, Typescript, Redux and React-Redux
 1. npx create-react-app react-connect4 --typescript
