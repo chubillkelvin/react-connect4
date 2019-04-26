@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css";
-import {PickOptional} from "../../../type/type";
 
 interface Props {
     direction: "left" | "right";
@@ -8,16 +7,14 @@ interface Props {
     text?: string;
 }
 
-class Arrow extends React.PureComponent<Props> {
-    static defaultProps: PickOptional<Props> = {
-        handleClick: () => {},
-        text: "",
-    };
+const Arrow: React.FunctionComponent<Props> = (props: Props) => {
+    const arrowDirection = `arrow-${props.direction}`;
+    return <div className={arrowDirection} onClick={props.handleClick} />;
+};
 
-    render() {
-        const arrowDirection = `arrow-${this.props.direction}`;
-        return <div className={arrowDirection} onClick={this.props.handleClick} />;
-    }
-}
+Arrow.defaultProps = {
+    handleClick: () => {},
+    text: "",
+};
 
 export default Arrow;
