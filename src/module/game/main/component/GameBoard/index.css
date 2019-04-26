@@ -3,3 +3,13 @@
   width: 700px;
   height: 700px;
 }
+
+.arrow-container {
+  float: left;
+  width: 100%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}

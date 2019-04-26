@@ -5,6 +5,7 @@ import DragRow from "../DragRow";
 import WinMessage from "../WinMessage";
 import {RootState} from "../../../../../type/state";
 import {connect} from "react-redux";
+import Arrow from "../../../../../component/library/Arrow";
 
 interface StateProps {
     playTickSound: boolean;
@@ -22,7 +23,11 @@ class GameBoard extends React.PureComponent<Props> {
         return (
             <div className="container">
                 <DragRow />
-                {columns}
+                <div>{columns}</div>
+                <div className="arrow-container">
+                    <Arrow direction={"left"} />
+                    <Arrow direction={"right"} />
+                </div>
                 <WinMessage />
                 {playTickSound && <audio autoPlay src={require("../../../../../asset/sound/tick.wav")} />}
             </div>
