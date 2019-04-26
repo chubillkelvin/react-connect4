@@ -4,7 +4,6 @@ import "./index.css";
 interface Props {
     direction: "left" | "right";
     handleClick?: () => void;
-    text?: string;
 }
 
 const Arrow: React.FunctionComponent<Props> = (props: Props) => {
@@ -14,7 +13,6 @@ const Arrow: React.FunctionComponent<Props> = (props: Props) => {
 
 Arrow.defaultProps = {
     handleClick: () => {},
-    text: "",
 };
 
 export default Arrow;
