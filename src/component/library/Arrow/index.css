@@ -5,6 +5,7 @@
   border-bottom: 40px solid transparent;
   border-right: 40px solid orange;
   border-right-width: 80px;
+  cursor: pointer;
 }
 
 .arrow-right {
@@ -14,4 +15,5 @@
   border-bottom: 40px solid transparent;
   border-left: 40px solid orange;
   border-left-width: 80px;
+  cursor: pointer;
 }
