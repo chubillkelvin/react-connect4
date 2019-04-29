@@ -15,6 +15,6 @@ export enum Action {
     ON_DRAG_START,
     ON_DRAG,
     ON_DRAG_STOP,
-    STEP_BACK,
+    STEP_BACKWARD,
     STEP_FORWARD,
 }

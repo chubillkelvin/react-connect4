@@ -54,7 +54,7 @@ export function gameReducer(state: GameState = initialState, action: Action): Ga
                 const won = WinChecker.checkWinner(newData, currentPlayer, columnIndex, rowIndex);
                 return {...state, history: newHistory, step: step + 1, dragging: false, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1, winner: won ? currentPlayer : null, playTickSound: !won};
             }
-        case GameAction.STEP_BACK:
+        case GameAction.STEP_BACKWARD:
             return {...state, step: step > 0 ? step - 1 : 0};
         case GameAction.STEP_FORWARD:
             return {...state, step: step + 1 < history.length ? step + 1 : step};
