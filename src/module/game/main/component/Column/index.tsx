@@ -6,7 +6,8 @@ import {RootState} from "../../../../../type/state";
 import {connect} from "react-redux";
 
 interface StateProps {
-    data: SlotState[][];
+    history: SlotState[][][];
+    step: number;
     dragging: boolean;
     currentX: number;
 }
@@ -17,7 +18,8 @@ interface Props extends StateProps {
 
 class Column extends React.PureComponent<Props> {
     render() {
-        const {column, data, dragging, currentX} = this.props;
+        const {column, history, step, dragging, currentX} = this.props;
+        const data = history[step];
         const columnData = data[column];
         const highlight = dragging && Math.round(currentX / 100) === column ? columnData.lastIndexOf(SlotState.available) : null;
         const slots: JSX.Element[] = [];
@@ -29,7 +31,8 @@ class Column extends React.PureComponent<Props> {
 }
 
 const mapStateToProps = (state: RootState): StateProps => ({
-    data: state.game.data,
+    history: state.game.history,
+    step: state.game.step,
     dragging: state.game.dragging,
     currentX: state.game.currentX,
 });
