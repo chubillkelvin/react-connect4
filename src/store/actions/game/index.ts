@@ -23,3 +23,11 @@ export const onStop = (e: DraggableEvent, data: DraggableData) => ({
         data,
     },
 });
+
+export const onStepBackwardClick = () => ({
+    type: GameAction.STEP_BACKWARD,
+});
+
+export const onStepForwardClick = () => ({
+    type: GameAction.STEP_FORWARD,
+});

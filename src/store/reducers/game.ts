@@ -42,10 +42,10 @@ export function gameReducer(state: GameState = initialState, action: Action): Ga
                 return {...state, dragging: false, playTickSound: false};
             } else {
                 newData[columnIndex][rowIndex] = currentPlayer as number;
-                const newHistory:SlotState[][][] = [];
+                const newHistory: SlotState[][][] = [];
                 history.forEach((data, index) => {
-                    if(index <= step) {
-                       newHistory.push(data);
+                    if (index <= step) {
+                        newHistory.push(data);
                     } else {
                         return;
                     }
@@ -55,9 +55,16 @@ export function gameReducer(state: GameState = initialState, action: Action): Ga
                 return {...state, history: newHistory, step: step + 1, dragging: false, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1, winner: won ? currentPlayer : null, playTickSound: !won};
             }
         case GameAction.STEP_BACKWARD:
-            return {...state, step: step > 0 ? step - 1 : 0};
+            if (step > 0) {
+                return {...state, step: step - 1, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1};
+            } else {
+                return state;
+            }
         case GameAction.STEP_FORWARD:
-            return {...state, step: step + 1 < history.length ? step + 1 : step};
+            if (step + 1 < history.length) {
+                return {...state, step: step + 1, currentPlayer: currentPlayer === Player.player1 ? Player.player2 : Player.player1};
+            }
+            return state;
         default:
             return state;
     }
