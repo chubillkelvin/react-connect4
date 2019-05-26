@@ -35,7 +35,7 @@ export function gameReducer(state: GameState = initialState, action: Action): Ga
         case GameAction.ON_DRAG_STOP:
             const x = payload.data.x;
             const data = history[step];
-            const newData = [...data];
+            const newData = data.map(_ => [..._]);
             const columnIndex = Math.round(x / 100);
             const rowIndex = newData[columnIndex].lastIndexOf(SlotState.available);
             if (rowIndex === -1) {
