@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "dbe5dab381b5acbdc23d",
+    "revision": "2ab2ad767f54a345bfb4",
     "url": "/react-connect4/static/css/main.830e1efa.chunk.css"
   },
   {
-    "revision": "dbe5dab381b5acbdc23d",
-    "url": "/react-connect4/static/js/main.c21895a5.chunk.js"
+    "revision": "2ab2ad767f54a345bfb4",
+    "url": "/react-connect4/static/js/main.f58aecd3.chunk.js"
   },
   {
     "revision": "14f307fc71fdb7c76087",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/react-connect4/static/media/win.0ed7f907.wav"
   },
   {
-    "revision": "80dca373087decd9b1fbb484bb4c054f",
+    "revision": "c0791aa53a08b534fc52b6189d2eba12",
     "url": "/react-connect4/index.html"
   }
 ];
