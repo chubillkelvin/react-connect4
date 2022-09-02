@@ -6,7 +6,7 @@ The goal of the game is to be the first to form a horizontal, vertical or diagon
 You can read more in this [Wikipedia Page](https://en.wikipedia.org/wiki/Connect_Four).
 
 ## Project Description
-This project is a React-version rebuild of my previous project [Connect 4](https://github.com/RageBill/connect4) which was built with jQuery and jQuery UI.
+This project is a React-version rebuild of my previous project [Connect 4](https://github.com/chubillkelvin/connect4) which was built with jQuery and jQuery UI.
 
 ## Main Dependencies
 
